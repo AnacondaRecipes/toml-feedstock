@@ -13,11 +13,11 @@ source:
 
 build:
   number: 0
-  noarch: python
+  noarch: {{ noarch_python }}
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
-  build:
+  host:
     - python
     - pip
 
@@ -27,9 +27,6 @@ requirements:
 test:
   imports:
     - toml
-  commands:
-    - conda inspect linkages -p $PREFIX toml  # [not win]
-    - conda inspect objects -p $PREFIX toml   # [osx]
 
 about:
   home: https://github.com/uiri/toml
