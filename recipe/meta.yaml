@@ -1,6 +1,6 @@
 {% set name = "toml" %}
-{% set version = "0.10.0" %}
-{% set sha256 = "229f81c57791a41d65e399fc06bf0848bab550a9dfd5ed66df18ce5f05e73d5c" %}
+{% set version = "0.10.2" %}
+{% set sha256 = "b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f" %}
 
 package:
   name: {{ name|lower }}
@@ -13,27 +13,30 @@ source:
 
 build:
   number: 0
-  noarch: {{ noarch_python }}
-  script: python -m pip install --no-deps --ignore-installed .
+  noarch: python
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
-  host:
-    - python
+  build:
+    - python >=2.7
     - pip
 
   run:
-    - python
+    - python >=2.7
 
 test:
   imports:
     - toml
+  commands:
+    - conda inspect linkages -p $PREFIX toml  # [not win]
+    - conda inspect objects -p $PREFIX toml   # [osx]
 
 about:
   home: https://github.com/uiri/toml
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'Python lib for TOML.'
+  summary: Python lib for TOML.
 
 extra:
   recipe-maintainers:
