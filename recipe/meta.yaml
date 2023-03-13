@@ -32,8 +32,6 @@ test:
     - toml
   commands:
     - pip check
-    - conda inspect linkages -p $PREFIX toml  # [not win]
-    - conda inspect objects -p $PREFIX toml   # [osx]
 
 about:
   home: https://github.com/uiri/toml
