@@ -41,6 +41,7 @@ about:
   summary: Python lib for TOML.
   dev_url: https://github.com/uiri/toml
   doc_url: https://github.com/uiri/toml
+  description: A Python library for parsing and creating TOML.
 
 extra:
   recipe-maintainers:
