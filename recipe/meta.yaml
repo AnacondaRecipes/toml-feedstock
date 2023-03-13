@@ -39,6 +39,8 @@ about:
   license_family: MIT
   license_file: LICENSE
   summary: Python lib for TOML.
+  dev_url: https://github.com/uiri/toml
+  doc_url: https://github.com/uiri/toml
 
 extra:
   recipe-maintainers:
