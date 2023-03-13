@@ -12,24 +12,26 @@ source:
   sha256: {{ sha256|lower }}
 
 build:
-  number: 0
-  noarch: python
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
-  build:
-    - python >=2.7
+  host:
+    - python
     - pip
+    - wheel
+    - setuptools
 
   run:
-    - python >=2.7
+    - python
 
 test:
+  requires:
+    - pip
   imports:
     - toml
   commands:
-    - conda inspect linkages -p $PREFIX toml  # [not win]
-    - conda inspect objects -p $PREFIX toml   # [osx]
+    - pip check
 
 about:
   home: https://github.com/uiri/toml
@@ -37,6 +39,9 @@ about:
   license_family: MIT
   license_file: LICENSE
   summary: Python lib for TOML.
+  dev_url: https://github.com/uiri/toml
+  doc_url: https://github.com/uiri/toml
+  description: A Python library for parsing and creating TOML.
 
 extra:
   recipe-maintainers:
