@@ -12,8 +12,7 @@ source:
   sha256: {{ sha256|lower }}
 
 build:
-  number: 0
-  noarch: python
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
@@ -25,9 +24,12 @@ requirements:
     - python >=2.7
 
 test:
+  requires:
+    - pip
   imports:
     - toml
   commands:
+    - pip check
     - conda inspect linkages -p $PREFIX toml  # [not win]
     - conda inspect objects -p $PREFIX toml   # [osx]
 
